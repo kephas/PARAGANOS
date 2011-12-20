@@ -5,5 +5,7 @@
 
 (defsystem "paraganos"
   :version ""
+  :depends-on "lisp-unit"
   :serial t
-  :components ((:file "package")))
+  :components ((:file "package")
+	       (:file "points")))
