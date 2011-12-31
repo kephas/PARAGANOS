@@ -8,4 +8,5 @@
   :depends-on "lisp-unit"
   :serial t
   :components ((:file "package")
+	       (:file "macros")
 	       (:file "points")))
