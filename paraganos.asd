@@ -5,7 +5,7 @@
 
 (defsystem "paraganos"
   :version ""
-  :depends-on ("lisp-unit" "closer-mop")
+  :depends-on ("lisp-unit" "closer-mop" "cl-utilities")
   :serial t
   :components ((:file "package")
 	       (:file "macros")
