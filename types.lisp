@@ -14,5 +14,10 @@
 	  nil
 	  (subtypep from to))))
 
+
+(defgeneric src-type (source)
+  (:documentation "Return the type of a datum that can be extracted or injected in this
+source"))
+
 (defun compatible-sources? (from to)
   (compatible-types? (src-type from) (src-type to)))
