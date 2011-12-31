@@ -87,6 +87,11 @@ Allocation for built-in types
 
 |#
 
+(define-test number-sources
+  (assert-equal 3 (extract 7 4))
+  (assert-equal 2 (second (multiple-value-list (extract 5 2))))
+  (assert-equal 5 (inject 3 2)))
+
 (defmethod extract ((from number) (datum number))
   (if (> datum from)
       (values from nil t)
@@ -95,6 +100,12 @@ Allocation for built-in types
 (defmethod inject ((from number) (datum number))
   (+ from datum))
 
+
+(define-test list-sources
+  (assert-equal '(1 3) (extract '(1 2 3) 2))
+  (assert-equal nil (extract '(42) 42))
+  (assert-equal '(4 5 6) (inject '(5 6) 4))
+  (assert-equal '(23) (inject nil 23)))
 
 (defmethod extract ((from list) datum)
   (cif found (find datum from :test #'eql)
