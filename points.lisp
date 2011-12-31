@@ -20,12 +20,10 @@
 		 (rec (rest slots-names))))))
     (rec (mapcar #'slot-definition-name (class-slots (class-of from))))))
 
-(defun apply-allocation (object from-name to-name &rest allocation-args)
+(defun apply-allocation (object from-name to-name)
   (let ((new-object (make-instance (class-of object))))
     (multiple-value-bind (new-from new-to)
-	(apply #'allocate (cons (slot-value object from-name)
-				(cons (slot-value object to-name)
-				      allocation-args)))
+	(allocate (slot-value object from-name) (slot-value object to-name))
       (copy-slots object new-object)
       (setf (slot-value new-object from-name) new-from
 	    (slot-value new-object to-name) new-to))))
